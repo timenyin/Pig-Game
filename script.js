@@ -13,6 +13,8 @@ const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
 
+const congrat = document.querySelector('.confetti-container');
+
 // score0El.textContent = 0;
 // score1El.textContent = 0;
 // diceEl.classList.add('hidden');
@@ -33,6 +35,8 @@ const init = function () {
   score1El.textContent = 0;
 
   diceEl.classList.add('hidden');
+
+  congrat.classList.add('confetti-container');
 
   player0El.classList.remove('player--winner');
   player1El.classList.remove('player--winner');
@@ -93,9 +97,12 @@ btnHold.addEventListener('click', function () {
       scores[activePlayer];
 
     // 2. Check if player's score is >= 100
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= 50) {
       playing = false;
       diceEl.classList.add('hidden');
+
+      congrat.classList.remove('confetti-container');
+
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.add('player--winner');
